@@ -14,6 +14,7 @@ function init() {
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
+const pdfMaker = require("pdfkit");
 
 inquirer
     .prompt({
@@ -24,7 +25,7 @@ inquirer
     
     .then(function ({ username }) {
         const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
-
+        console.log(queryUrl);
         axios.get(queryUrl).then(function ({ data }) {
             const repoNames = data.map(function (repo) {
                 return repo.name;
