@@ -14,7 +14,7 @@ function init() {
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-const pdfMaker = require("pdfkit");
+// const pdfMaker = require("pdfkit");
 
 inquirer
 inquirer.prompt([
@@ -57,20 +57,20 @@ inquirer.prompt([
     });
 
 
-const questions = []
+// const questions = []
 
 
 
-    .then(function (response) {
-        console.log(response);
-        fs.writeFile(response.username + ".JSON",
-            JSON.stringify(response, null, 2),
-            function (err) {
+    // .then(function (response) {
+    //     console.log(response);
+    //     fs.writeFile(response.username + ".JSON",
+    //         JSON.stringify(response, null, 2),
+    //         function (err) {
 
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log("success!");
-                }
-            });
-    });
+    //             if (err) {
+    //                 console.log(err);
+    //             } else {
+    //                 console.log("success!");
+    //             }
+    //         });
+    // });

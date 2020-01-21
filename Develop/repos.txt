@@ -1,11 +1,1 @@
-Code-Quiz.github.io
-December-19
-Developer-Profile-Generator
-Js-Password-Generator.github.io
-markdown-here
-Nearby-Restaurants
-prework-about-me
-projectOne
-tedla-b.github.io
-tedla-css.github.io
-webdevbootcamp
+undefined.github.io
