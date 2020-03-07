@@ -1,18 +1,23 @@
 {
-  "name": "Develop",
+  "name": "profile-generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.1",
-    "fs": "0.0.1-security",
-    "inquirer": "^7.0.3",
-    "require": "^2.4.20"
+    "axios": "^0.19.2",
+    "chromium": "^2.1.1",
+    "dotenv": "^8.2.0",
+    "electron": "^8.1.0",
+    "electron-html-to": "^2.6.0",
+    "html-pdf": "^2.2.0",
+    "inquirer": "^7.0.6",
+    "open": "^7.0.2",
+    "puppeteer": "^2.1.1",
+    "util": "^0.12.2"
   }
 }

@@ -1,62 +1,102 @@
-const fs = require("fs");
-const axios = require("axios");
+//defining const variables
 const inquirer = require("inquirer");
+const axios = require("axios").default;
+const fs = require("fs");
+const generateHTML = require('./generateHTML');
+const pdf = require('html-pdf');
 
-
-const questions = [
-
-];
-
-function writeToFile(fileName, data) {
-
-}
-
-function init() {
-
-    init();
-}
-
-
-// const pdfMaker = require("pdfkit");
-
-
-inquirer.prompt([
+function promptUser(res) {
+  return inquirer.prompt([
     {
-        type: "input",
-        message: ("What is your Github user name?"),
-        name: "username",
+      type: "input",
+      name: "username",
+      message: "Enter your GitHub Username"
     },
+    {
+      type: "expand",
+      name: "color",
+      message: "What is your preferred color?",
+      choices: [
+        {
+          key: "g",
+          value: "green",
+        },
+        {
+          key: "b",
+          value: "blue",
+        },
+        {
+          key: "p",
+          value: "pink",
+        },
+        {
+          key: "r",
+          value: "red",
+        },
+      ],
+    },
+    {
+      type: "input",
+      name: "linkedIn",
+      message: "Enter your LinkedIn URL."
+    }
+  ])
 
-    // {
-    //     type: "list",
-    //     message: ("What is your favorite color?"),
-    //     choices: ["pink", "blue", "pink", "red"],
-    //     name: "favoriteColor",
 
-    // }
-])
+  .then(function(res) {
+    const userName = res.username;
+    const userColor = res.color;
 
-    .then(function ({ username }) {
-        const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
-        console.log(queryUrl);
-        axios.get(queryUrl).then(function ({ data }) {
-            const repoNames = data.map((repo) => repo.name);
+    const queryURL = `https://api.github.com/users/${userName}`;
+    const starredURL = `https://api.github.com/users/${userName}/starred`;
+
+
+    //calling a function
+gitHubRequest(queryURL).then(function(userData){
+    githubStars(starredURL)
+    .then(function(starResponse) {
+        const options = { format: 'Letter' };
+        pdf.create(generateHTML(res, starResponse, userData), options).toFile(`./${userData.fullName}.pdf`, function (err, result) {
+            if (err) return console.log(err);
+            console.log(result);
         })
-
-            .then(function ({ data }) {
-                const follower = data.map((followers) => followers.id);
-                console.log(follower);
-                // });
-
-
-
-
-                fs.writeFile("repos.txt", repoNamesStr, function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                    console.log()
-                    console.log(`Saved ${repoNames.length} repos`);
-                });
-            });
     })
+})
+});
+
+
+
+//API CALL
+function gitHubRequest(queryURL) {
+    return axios.get(queryURL)
+    .then(function(gitResponse){
+
+        let userData = {
+        //avitar URL
+        fullName : (gitResponse.data.name),
+        proPic : (gitResponse.data.avatar_url + ".png"),
+        gitUsername : (gitResponse.data.login),
+        location : (gitResponse.data.location),
+        profileURL : (gitResponse.data.html_url),
+        blog : (gitResponse.data.blog),
+        userBio : (gitResponse.data.bio),
+        publicRepos : (gitResponse.data.public_repos),
+        followers : (gitResponse.data.followers),
+        following : (gitResponse.data.following)
+        };
+
+        return userData;
+        
+    }).catch(function(error){
+        console.log(error);
+    });
+};
+
+//api call for number of stars
+function githubStars(starredURL){
+    return axios.get(starredURL)
+    .then(function (starResponse) {
+        return starResponse.data.length;
+    });
+}}
+  promptUser();
