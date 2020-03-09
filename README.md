@@ -35,5 +35,39 @@ SO THAT I can easily prepare reports for stakeholders
 
 ```
 
-![Demo](https://github.com/mekditd/Developer-Profile-Generator/blob/master/Develop/Tedla-Betsuan.pdf)
+# Developer Profile Generator
+
+Create a command-line application that dynamically generates a PDF profile from a GitHub username. The application will be invoked with the following command:
+
+```sh
+node index.js
+```
+
+The user will be prompted for a favorite color, which will be used as the background color for cards.
+
+The PDF will be populated with the following:
+
+* Profile image
+* User name
+* Links to the following:
+  * User location via Google Maps
+  * User GitHub profile
+  * User blog
+* User bio
+* Number of public repositories
+* Number of followers
+* Number of GitHub stars
+* Number of users following
+
+
+```
+AS A product manager
+
+I WANT a developer profile generator
+
+SO THAT I can easily prepare reports for stakeholders
+```
+
+ <img src="./Assets/demo.png" height="400" alt="Screenshot"/> 
+
 
