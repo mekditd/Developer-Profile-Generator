@@ -30,4 +30,4 @@ I WANT a developer profile generator
 
 SO THAT I can easily prepare reports for stakeholders
 ```
-[embed]Develop/Tedla-Betsuan.pdf[/embed]
+[embed]https://github.com/mekditd/Developer-Profile-Generator/blob/backup/Develop/Tedla-Betsuan.pdf[/embed]
