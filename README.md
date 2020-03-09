@@ -26,15 +26,14 @@ The PDF will be populated with the following:
 * Number of users following
 
 
+```
 ## AS A product manager
 
 I WANT a developer profile generator
 
 SO THAT I can easily prepare reports for stakeholders
-```
-![Demo](Develop/Tedla-Betsuan.pdf)
 
 ```
 
-![Demo](profile.PNG)
+![Demo](https://github.com/mekditd/Developer-Profile-Generator/blob/master/Develop/Tedla-Betsuan.pdf)
 
