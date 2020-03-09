@@ -30,4 +30,4 @@ I WANT a developer profile generator
 
 SO THAT I can easily prepare reports for stakeholders
 ```
-<img src="../Tedla-Betsuan.pdf" height="100px" width="100px">
+[embed]Develop/Tedla-Betsuan.pdf[/embed]
